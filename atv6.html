@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="style1.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #resultado {
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+            font-size: 24pt;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <ul>
+            <li><a href="atv1.html">Ex 1</a></li>
+            <li><a href="atv2.html">Ex 2</a></li>
+            <li><a href="atv3.html">Ex 3</a></li>
+            <li><a href="atv4.html">Ex 4</a></li>
+            <li><a href="atv5.html">Ex 5</a></li>
+            <li><a href="atv6.html">Ex 6</a></li>
+            <li><a href="atv7.html">Ex 7</a></li>
+            <li><a href="atv8.html">Ex 8</a></li>
+            <li><a href="atv9.html">Ex 9</a></li>
+            <li><a href="atv10.html">Ex 10</a></li>
+        </ul>
+    </section>
+    <h1>Cálculo de IMC</h1>
+    <form>
+        <label for="altura">Digite sua altura (em metros): </label>
+        <input type="number" step="0.01" id="altura" required>
+        <br>
+        <label for="peso">Peso (em kg): </label>
+        <input type="number" id="peso" required>
+        <br>
+        <label for="sexo">Sexo: </label>
+        <select id="sexo">
+            <option value="feminino">Feminino</option>
+            <option value="masculino">Masculino</option>
+        </select>
+        <br><br>
+        <label for="resultado">Seu IMC:</label>
+        <br>
+        <button type="button" onclick="calcularIMC()">Calcular IMC</button>
+        <br>
+        <textarea name="resultado" id="resultado" readonly></textarea>
+    </form>
+
+    <script>
+        function calcularIMC() {
+            var altura = parseFloat(document.getElementById("altura").value);
+            var peso = parseFloat(document.getElementById("peso").value);
+            var sexo = document.getElementById("sexo").value;
+
+            var imc = peso / (altura * altura);
+            var imcFormatado = imc.toFixed(2);
+            var resultado = '';
+
+            if (sexo === 'feminino') {
+                if (imc < 19.1) {
+                    resultado = 'Abaixo do peso: ' + imcFormatado;
+                } else if (imc >= 19.1 && imc <= 25.8) {
+                    resultado = 'No peso normal: ' + imcFormatado;
+                } else if (imc > 25.8 && imc <= 27.3) {
+                    resultado = 'Marginalmente acima do peso: ' + imcFormatado;
+                } else if (imc > 27.3 && imc <= 32.3) {
+                    resultado = 'Acima do peso ideal: ' + imcFormatado;
+                } else {
+                    resultado = 'Obeso: ' + imcFormatado;
+                }
+            } else {
+                if (imc < 20.7) {
+                    resultado = 'Abaixo do peso: ' + imcFormatado;
+                } else if (imc >= 20.7 && imc <= 26.4) {
+                    resultado = 'No peso normal: ' + imcFormatado;
+                } else if (imc > 26.4 && imc <= 27.8) {
+                    resultado = 'Marginalmente acima do peso: ' + imcFormatado;
+                } else if (imc > 27.8 && imc <= 31.1) {
+                    resultado = 'Acima do peso ideal: ' + imcFormatado;
+                } else {
+                    resultado = 'Obeso: ' + imcFormatado;
+                }
+            }
+            document.getElementById("resultado").value = resultado;
+        }
+    </script>
+</body>
+
+</html>

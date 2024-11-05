@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <section>
+        <ul>
+            <li><a href="atv1.html">Ex 1</a></li>
+            <li><a href="atv2.html">Ex 2</a></li>
+            <li><a href="atv3.html">Ex 3</a></li>
+            <li><a href="atv4.html">Ex 4</a></li>
+            <li><a href="atv5.html">Ex 5</a></li>
+            <li><a href="atv6.html">Ex 6</a></li>
+            <li><a href="atv7.html">Ex 7</a></li>
+            <li><a href="atv8.html">Ex 8</a></li>
+            <li><a href="atv9.html">Ex 9</a></li>
+            <li><a href="atv10.html">Ex 10</a></li>
+        </ul>
+    </section>
+    <h1>Area do Retangulo</h1>
+
+    <form onsubmit="event.preventDefault(); verificar();">
+        <label for="base">Digite o valor base:</label>
+        <input type="number" name="base" id="base" required><br>
+        <label for="altura">Digite o valor da altura</label>
+        
+        <input type="number" name="altura" id="altura" required>
+        <button onclick="verificar()">calcular</button>
+        <br><br>
+        <label for="resultado">Resultado</label>
+        <textarea name="resultado" id="resultado" readonly></textarea>
+        
+
+        <script>
+            function verificar(){
+                var base  = parseFloat(document.getElementById('base').value);
+                var altura  = parseFloat(document.getElementById('altura').value);
+
+                if (isNaN(base,altura)){
+                    resultado.value = 'invalido';
+                }
+                else {
+                    var area = base * altura;
+                    resultado.value  = 'A area do retangulo é: ' + area;  
+                }
+
+            }
+
+        </script>
+    </form>
+    
+</body>
+</html>

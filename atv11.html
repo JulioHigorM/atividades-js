@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Notas</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #334a5f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #9e9494;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff7b00;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #fd0000;
+        }
+
+        a:link {
+            color: #0044ff;
+            text-decoration: none;
+        }
+
+        a:link:hover {
+            text-decoration: underline;
+        }
+
+        li {
+            color: #ff0000;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .aprovado {
+            color: green;
+        }
+
+        .reprovado {
+            color: red;
+        }
+
+        .avaliacao-final {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <section>
+            <ul>
+                <li><a href="atv1.html">Ex 1</a></li>
+                <li><a href="atv2.html">Ex 2</a></li>
+                <li><a href="atv3.html">Ex 3</a></li>
+                <li><a href="atv4.html">Ex 4</a></li>
+                <li><a href="atv5.html">Ex 5</a></li>
+                <li><a href="atv6.html">Ex 6</a></li>
+                <li><a href="atv7.html">Ex 7</a></li>
+                <li><a href="atv8.html">Ex 8</a></li>
+                <li><a href="atv9.html">Ex 9</a></li>
+                <li><a href="atv10.html">Ex 10</a></li>
+            </ul>
+        </section>
+        <h2>Formulário de Notas</h2>
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome">
+        </div>
+        <div class="form-group">
+            <label for="rgm">RGM:</label>
+            <input type="text" id="rgm">
+        </div>
+        <div class="form-group">
+            <label for="nota_parcial">Nota Parcial (máximo 2 pontos):</label>
+            <input type="number" id="nota_parcial" max="2">
+        </div>
+        <div class="form-group">
+            <label for="nota_exercicios">Nota Exercícios (máximo 1 ponto):</label>
+            <input type="number" id="nota_exercicios" max="1">
+        </div>
+        <div class="form-group">
+            <label for="nota_projeto">Nota Projeto (máximo 2 pontos):</label>
+            <input type="number" id="nota_projeto" max="2">
+        </div>
+        <div class="form-group">
+            <label for="nota_regimental">Nota Regimental (máximo 5 pontos):</label>
+            <input type="number" id="nota_regimental" max="5">
+        </div>
+        <button class="btn" onclick="cadastrar()">Cadastrar</button>
+        <button class="btn" onclick="mostrar()">Mostrar</button>
+    </div>
+    <table id="tabela-dados">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>RGM</th>
+                <th>Nota Parcial</th>
+                <th>Nota Exercícios</th>
+                <th>Nota Projeto</th>
+                <th>Nota Regimental</th>
+                <th>Nota Final</th>
+                <th>Conceito</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const nomes = [];
+        const rgms = [];
+        const notas_p = [];
+        const notas_exer = [];
+        const notas_proj = [];
+        const notas_reg = [];
+
+        function cadastrar() {
+            const nome = document.getElementById('nome').value;
+            const rgm = document.getElementById('rgm').value;
+            const nota_parcial = parseFloat(document.getElementById('nota_parcial').value);
+            const nota_exercicios = parseFloat(document.getElementById('nota_exercicios').value);
+            const nota_projeto = parseFloat(document.getElementById('nota_projeto').value);
+            const nota_regimental = parseFloat(document.getElementById('nota_regimental').value);
+
+            if (nome && rgm && !isNaN(nota_parcial) && !isNaN(nota_exercicios) && !isNaN(nota_projeto) && !isNaN(nota_regimental)) {
+                nomes.push(nome);
+                rgms.push(rgm);
+                notas_p.push(nota_parcial);
+                notas_exer.push(nota_exercicios);
+                notas_proj.push(nota_projeto);
+                notas_reg.push(nota_regimental);
+
+                document.getElementById('nome').value = '';
+                document.getElementById('rgm').value = '';
+                document.getElementById('nota_parcial').value = '';
+                document.getElementById('nota_exercicios').value = '';
+                document.getElementById('nota_projeto').value = '';
+                document.getElementById('nota_regimental').value = '';
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        }
+
+        function mostrar() {
+            const tbody = document.getElementById('tabela-dados').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            for (let i = 0; i < nomes.length; i++) {
+                const nota_final = calcularNotaFinal(notas_p[i], notas_exer[i], notas_proj[i], notas_reg[i]);
+                const conceito = obterConceito(nota_final);
+
+                const row = tbody.insertRow();
+                row.insertCell(0).innerText = nomes[i];
+                row.insertCell(1).innerText = rgms[i];
+                row.insertCell(2).innerText = notas_p[i];
+                row.insertCell(3).innerText = notas_exer[i];
+                row.insertCell(4).innerText = notas_proj[i];
+                row.insertCell(5).innerText = notas_reg[i];
+                row.insertCell(6).innerText = nota_final.toFixed(2);
+                const conceitoCell = row.insertCell(7);
+                conceitoCell.innerText = conceito;
+                conceitoCell.className = conceito.toLowerCase().replace(' ', '-');
+            }
+        }
+
+        function calcularNotaFinal(nota_p, nota_exer, nota_proj, nota_reg) {
+            return nota_p + nota_exer + nota_proj + nota_reg;
+        }
+
+        function obterConceito(nota_final) {
+            if (nota_final >= 6) {
+                return 'Aprovado';
+            } else if (nota_final >= 4) {
+                return 'Avaliação Final';
+            } else {
+                return 'Reprovado';
+            }
+        }
+    </script>
+</body>
+
+</html>

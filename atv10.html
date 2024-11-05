@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício de DHTML</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        .tab {
+            display: none;
+        }
+
+        .tab.active {
+            display: block;
+        }
+
+        .tabs button {
+            cursor: pointer;
+        }
+
+        .slideshow img {
+            max-width: 40%;
+            display: none;
+        }
+
+        .slideshow img.active {
+            display: block;
+        }
+    </style>
+    <script>
+        let startTime;
+        let interval;
+        let currentSlide = 0;
+
+        function showTab(tabIndex) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach((tab, index) => {
+                tab.classList.toggle('active', index === tabIndex);
+            });
+        }
+
+        function startTimer() {
+            startTime = new Date().getTime();
+            interval = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const elapsedTime = now - startTime;
+            const seconds = Math.floor(elapsedTime / 1000) % 60;
+            const minutes = Math.floor(elapsedTime / (1000 * 60)) % 60;
+            const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+
+            document.getElementById('timer').textContent =
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slideshow img');
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.slideshow img');
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.slideshow img');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function calculateTabuada() {
+            const number = document.getElementById('tabuadaNumber').value;
+            const tabuadaElement = document.getElementById('tabuadaResult');
+            tabuadaElement.innerHTML = '';
+            for (let i = 0; i <= 10; i++) {
+                const result = `${number} x ${i} = ${number * i}`;
+                const p = document.createElement('p');
+                p.textContent = result;
+                tabuadaElement.appendChild(p);
+            }
+        }
+
+        window.onload = () => {
+            showTab(0);
+            startTimer();
+            showSlide(0);
+        }
+    </script>
+</head>
+
+<body>
+    <section>
+        <ul>
+            <li><a href="atv1.html">Ex 1</a></li>
+            <li><a href="atv2.html">Ex 2</a></li>
+            <li><a href="atv3.html">Ex 3</a></li>
+            <li><a href="atv4.html">Ex 4</a></li>
+            <li><a href="atv5.html">Ex 5</a></li>
+            <li><a href="atv6.html">Ex 6</a></li>
+            <li><a href="atv7.html">Ex 7</a></li>
+            <li><a href="atv8.html">Ex 8</a></li>
+            <li><a href="atv9.html">Ex 9</a></li>
+            <li><a href="atv10.html">Ex 10</a></li>
+        </ul>
+    </section>
+    <div class="tabs">
+        <button onclick="showTab(0)">Cronômetro</button>
+        <button onclick="showTab(1)">Slide Show</button>
+        <button onclick="showTab(2)">Tabuada</button>
+    </div>
+    <div class="tab active" id="cronometro">
+        <h2>Cronômetro</h2>
+        <div id="timer">00:00:00</div>
+    </div>
+    <div class="tab" id="slideshow">
+        <h2>Slide Show</h2>
+        <div class="slideshow">
+            <img src="imagem.jpg" alt="Imagem 0" class="active">
+            <img src="captura-de-tela-2024-07-25-as-08.36.21.jpg" alt="Imagem 1">
+            <img src="Doris_the_ugly_stepsister.jpg" alt="Imagem 2">
+            <img src="Fada_Madrinha_29.jpg" alt="Imagem 3">
+            <img src="Lobo_Feroz.jpg" alt="Imagem 4">
+        </div>
+        <button onclick="prevSlide()">Anterior</button>
+        <button onclick="nextSlide()">Próximo</button>
+    </div>
+    <div class="tab" id="tabuada">
+        <h2>Tabuada</h2>
+        <input type="number" id="tabuadaNumber" placeholder="Digite o número">
+        <button onclick="calculateTabuada()">Calcular</button>
+        <div id="tabuadaResult"></div>
+    </div>
+</body>
+
+</html>

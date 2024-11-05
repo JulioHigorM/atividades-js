@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <section>
+        <ul>
+            <li><a href="atv1.html">Ex 1</a></li>
+            <li><a href="atv2.html">Ex 2</a></li>
+            <li><a href="atv3.html">Ex 3</a></li>
+            <li><a href="atv4.html">Ex 4</a></li>
+            <li><a href="atv5.html">Ex 5</a></li>
+            <li><a href="atv6.html">Ex 6</a></li>
+            <li><a href="atv7.html">Ex 7</a></li>
+            <li><a href="atv8.html">Ex 8</a></li>
+            <li><a href="atv9.html">Ex 9</a></li>
+            <li><a href="atv10.html">Ex 10</a></li>
+        </ul>
+    </section>
+    <h1>calculadora de imposto de renda</h1>
+    <form>
+        <label for="Registro">Registro</label>
+        <input type="text" name="resgistro" id="resgistro" required>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" required>
+        <br><br>
+        <label for="salario">Informe seu salario</label>
+        <input type="number" name="salario" id="salario" placeholder="R$" required>
+
+        <button type="button" onclick="ir()">calcular IR</button>
+        <br>
+        <label for="importo">seu importo de renda:</label>
+        <textarea name="resultado" id="resultado" readonly></textarea>
+    </form>
+
+    <script>
+        function ir() {
+            var salario = parseFloat(document.getElementById("salario").value);
+            var ir = 0;
+
+            if (salario <= 1434) {
+                ir = 0;
+            } else if (salario <= 2150) {
+                ir = salario * 0.075;
+            } else if (salario <= 2866) {
+                ir = salario * 0.15;
+            } else if (salario <= 3582) {
+                ir = salario * 0.225;
+            } else {
+                ir = salario * 0.275;
+            }
+            document.getElementById("resultado").value =` R$ ${ir.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>

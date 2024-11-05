@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios</title>
+    <link rel="stylesheet" href="style1.css">
+    <script>
+        function soma(){
+            var numero = parseInt(document.getElementById("P_Valor").value);
+            var numero2 = parseInt(document.getElementById("S_Valor").value);
+            var soma = (numero + numero2);
+            document.getElementById("Resultado").setAttribute("value", soma);
+        }
+
+        function sub(){
+            var numero = parseInt(document.getElementById("P_Valor").value);
+            var numero2 = parseInt(document.getElementById("S_Valor").value);
+            var subtracao = (numero - numero2);
+            document.getElementById("Resultado").setAttribute("value", subtracao);
+        }
+
+        function mult(){
+            let numero = parseInt(document.getElementById("P_Valor").value);
+            let numero2 = parseInt(document.getElementById("S_Valor").value);
+            var mult = (numero * numero2);
+            document.getElementById("Resultado").setAttribute("value", mult);
+        }
+
+        function div(){
+            let numero = parseInt(document.getElementById("P_Valor").value);
+            let numero2 = parseInt(document.getElementById("S_Valor").value);
+            var div = (numero / numero2);
+            document.getElementById("Resultado").setAttribute("value", div);
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <ul>
+            <li><a href="atv1.html">Ex 1</a></li>
+            <li><a href="atv2.html">Ex 2</a></li>
+            <li><a href="atv3.html">Ex 3</a></li>
+            <li><a href="atv4.html">Ex 4</a></li>
+            <li><a href="atv5.html">Ex 5</a></li>
+            <li><a href="atv6.html">Ex 6</a></li>
+            <li><a href="atv7.html">Ex 7</a></li>
+            <li><a href="atv8.html">Ex 8</a></li>
+            <li><a href="atv9.html">Ex 9</a></li>
+            <li><a href="atv10.html">Ex 10</a></li>
+        </ul>
+    </section>
+
+    <div class="base">
+        <h1 class="titulo">Exercícios</h1>
+        
+        <form class="calculadora">
+            <div class="container">
+                <h3>Calculadora</h3>
+
+                <label for="P_Valor">Primeiro Valor: </label>
+                <input type="number" id="P_Valor" size="5" autofocus>
+
+                <label for="S_Valor">Segundo Valor: </label>
+                <input type="number" id="S_Valor" size="5" autofocus>
+
+                <div class="buttons">
+                    <input type="button" value="+" onclick="soma();">
+                    <input type="button" value="-" onclick="sub();">
+                    <input type="button" value="*" onclick="mult();">
+                    <input type="button" value="/" onclick="div();">
+                </div>
+
+                <label for="Resultado">Resultado:</label>
+                <input type="number" id="Resultado" value="" readonly>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

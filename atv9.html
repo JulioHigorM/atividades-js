@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse:separate;
+            border-radius: 5%;
+        }
+
+        td {
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        td:nth-child(even) {
+            background-color: green;
+            color: black;
+        }
+
+        td:nth-child(odd) {
+            background-color: yellow;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <ul>
+            <li><a href="atv1.html">Ex 1</a></li>
+            <li><a href="atv2.html">Ex 2</a></li>
+            <li><a href="atv3.html">Ex 3</a></li>
+            <li><a href="atv4.html">Ex 4</a></li>
+            <li><a href="atv5.html">Ex 5</a></li>
+            <li><a href="atv6.html">Ex 6</a></li>
+            <li><a href="atv7.html">Ex 7</a></li>
+            <li><a href="atv8.html">Ex 8</a></li>
+            <li><a href="atv9.html">Ex 9</a></li>
+            <li><a href="atv10.html">Ex 10</a></li>
+        </ul>
+    </section>
+    <script>
+
+        let numLinhas = parseInt(prompt("Digite o número de linhas da tabela:"));
+        let numColunas = parseInt(prompt("Digite o número de colunas da tabela:"));
+
+
+        if (isNaN(numLinhas) || isNaN(numColunas) || numLinhas <= 0 || numColunas <= 0) {
+            alert("Por favor, insira números válidos e maiores que 0.");
+        } else {
+
+            let tabela = document.createElement("table");
+
+
+            for (let i = 0; i < numLinhas; i++) {
+                let tr = document.createElement("tr");
+
+                for (let j = 0; j < numColunas; j++) {
+                    let td = document.createElement("td");
+
+
+                    td.textContent = `(${i + 1}, ${j + 1})`;
+
+
+                    tr.appendChild(td);
+                }
+
+
+                tabela.appendChild(tr);
+            }
+
+
+            document.body.appendChild(tabela);
+        }
+    </script>
+</body>
+
+</html>
